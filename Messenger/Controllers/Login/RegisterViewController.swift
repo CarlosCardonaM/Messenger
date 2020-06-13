@@ -136,6 +136,7 @@ class RegisterViewController: UIViewController {
         presentPhotoActionSheet()
     }
     
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         scrollView.frame = view.bounds
