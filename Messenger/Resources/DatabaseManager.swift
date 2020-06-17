@@ -8,10 +8,11 @@
 
 import Foundation
 import FirebaseDatabase
+import FirebaseAuth
 
 final class DatabaseManager {
     
-    static let shared = DatabaseManager()
+    static var shared = DatabaseManager()
     
     private let database = Database.database().reference()
     
@@ -38,7 +39,7 @@ extension DatabaseManager {
     /// Inserts new user to database
     public func insertUser(with user: ChatAppUser) {
         database.child(user.safeEmail).setValue([
-            "firs_name": user.firstName,
+            "first_name": user.firstName,
             "last_name": user.lastName
         ])
     }
@@ -49,7 +50,6 @@ struct ChatAppUser {
     let firstName: String
     let lastName: String
     let emailAddress: String
-    
     var safeEmail: String {
         
         var safeEmail = emailAddress.replacingOccurrences(of: ".", with: "-")
